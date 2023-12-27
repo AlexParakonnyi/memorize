@@ -1,5 +1,8 @@
 import { useState } from "react";
-import { Container } from "@mui/material";
+import { Container, ThemeProvider } from "@mui/material";
+import { theme } from "./styles/mainTheme";
+
+import RouterApp from "./router/RouterApp";
 import Header from "./components/Header";
 import SideMenu from "./components/SideMenu";
 
@@ -14,13 +17,15 @@ function App() {
   };
 
   return (
-    <>
-      <SideMenu isOpenMenu={isOpenMenu} handlerCloseMenu={handlerCloseMenu} />
-      <Header handlerOpenMenu={handlerOpenMenu} />
-      <Container maxWidth="md">
-        <h1>Main page</h1>
-      </Container>
-    </>
+    <ThemeProvider theme={theme}>
+      <RouterApp>
+        <SideMenu isOpenMenu={isOpenMenu} handlerCloseMenu={handlerCloseMenu} />
+        <Header handlerOpenMenu={handlerOpenMenu} />
+        <Container maxWidth="md">
+          <h1>Main page</h1>
+        </Container>
+      </RouterApp>
+    </ThemeProvider>
   );
 }
 
